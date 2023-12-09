@@ -1,6 +1,9 @@
 # AINA
 Team KNS project for INF 385T: Deep Learning and Multimodal Systems
 
+### Prerequisite:
+Our datasets are all maintained under the folder path `/content/drive/MyDrive/Colab Notebooks/DL Project/` in Google Drive. We run our notebook on Google Colab with Drive mounted. Please make sure to edit file/folder paths across the notebook to point to the correct locations within your environment before you run any Notebook cells.
+
 ## `embeddings.ipynb`
 ### Contents:
 - An exploration of CLIP, ISC21, and ResNet50 embedding models in the context of image similarity where we generate embeddings, calculate cosine similarity for a group of images and compare median aggregations
@@ -10,8 +13,7 @@ Team KNS project for INF 385T: Deep Learning and Multimodal Systems
 ### Dataset pre-processing
 **Dataset:** [Instagram Images - 1,211,625 posts](https://www.kaggle.com/datasets/shmalex/instagram-images)
 
-**Prerequisite:** On Google Drive, add a shortcut of the shared directory 'DL project' to a desired location (I did to `/content/drive/My Drive/Colab Notebooks`).  
-I downloaded the contents of `/r/r/` of the original dataset and uploaded under `/content/drive/My Drive/Colab Notebooks/DL project/data_plain/r/r`. Then I run the Notebook cells. Make sure to do the same and also adjust `base` and `save_to` values as needed if you desire to process more images.
+**Prerequisite:** Adjust `base` and `save_to` values as needed if you desire to process more images.
 
 We apply the following operations, and for each operation (and sub-operation), there will be a new folder in the `save_to` path for the processed images:
 
