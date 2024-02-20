@@ -1,44 +1,45 @@
-# AINA
-Team KNS project for INF 385T: Deep Learning and Multimodal Systems
+# AINA: An Image Nearness Analysis
 
-### Prerequisite:
-Our datasets are all maintained under the folder path `/content/drive/MyDrive/Colab Notebooks/DL Project/` in Google Drive. We run our notebook on Google Colab with Drive mounted. Please make sure to edit file/folder paths across the notebook to point to the correct locations within your environment before you run any Notebook cells.
+This project is an academic project created for the course INF 385T: Deep Learning and Multimodal Systems
 
-## `embeddings.ipynb`
-### Contents:
-- An exploration of CLIP, ISC21, and ResNet50 embedding models in the context of image similarity where we generate embeddings, calculate cosine similarity for a group of images and compare median aggregations
-- Exploration of how low cosine similarity scores can be for look-alikes (in an attempt to determine a suitable threshold value)
-- Dataset pre-processing: We apply 18 transformations to a subset of 346 images from the Instagram Images (Kaggle) dataset as described below
+Team KNS (Shreya Shukla - https://github.com/shreyashukla01, Krishna Sri Somepalli - https://github.com/krishnasriSomepalli)
 
-### Dataset pre-processing
-**Dataset:** [Instagram Images - 1,211,625 posts](https://www.kaggle.com/datasets/shmalex/instagram-images)
+### Motivation
+Image similarity is important in tasks like content based information retrieval, detecting duplicate images, assessing similar images for medical ailments and making recommendations to consumers based on queried images. In the social media realm, it can have multifold benefits in detecting and flagging inappropriate images, identifying misinformation and preventing upload of violent and vulgar content. In this project we did a comprehensive analysis of image similarity detection where we delve into different models, embeddings, visualizations and more.
 
-**Prerequisite:** Adjust `base` and `save_to` values as needed if you desire to process more images.
+### Dataset
+We used a subset of Instagram images dataset available on Kaggle.
 
-We apply the following operations, and for each operation (and sub-operation), there will be a new folder in the `save_to` path for the processed images:
+### Our analysis had different phases as explained below -
 
-#### 1. Borders: white, black
-Given an image of size `width x height`, we identify the bigger dimension as `side` and add borders to the image so that the resultant picture has `side x side` dimensions. However, if `width=height`, we just add borders of width 70px on all sides.  
-We use #fff and #000 color borders and this behavior can be customized using `border_colors`.
+**1. Comparison of similarity scores from different models -**
+In our analysis, we initially conducted various operations on the images, including cropping, applying Instagram filters, mirroring, and rotating (18 modifications). Subsequently, leveraging models like CLIP and ISC21 (available at https://sites.google.com/view/isc2021), we computed image similarity scores for the modified images and averaged them. By utilizing the average similarity score across the different images, we assessed and compared the performance of different models in detecting similarities.
 
-#### 2. Filters: inkwell, lofi, aden
-The supported filters are listed in the [pilgram documentation](https://github.com/akiomik/pilgram). We only use `inkwell`, `lofi`, and `aden`. (`inkwell` is a kind of black and white filter.)
+**2. Siamese Network -** Next we created a siamese network, using ResNet50 as the embedding generator and  a fully connected CNN network for the Dense Layers. 
 
-#### 3. Crop to:
-The following `position`s are accepted:
-- center
-- left_half
-- right_half
-- upper_half
-- lower_half
-- upperleft_quarter
-- upperright_quarter
-- lowerleft_quarter
-- lowerright_quarter
+<img width="554" alt="Screenshot 2024-02-19 at 6 29 09 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/08bde2d1-6618-476c-9ede-b2c8f5c26a13">
 
-#### 4. Mirror:
-Flips image horizontally (left to right)
+3. **Emedding Visualizations -** Given the high-dimensional nature of the embeddings (e.g., 50 dimensions for ResNet 50, 512 for CLIP, and 256 for ISC21), we used dimensionality reduction techniques like t-SNE and UMAP to visualise embeddings that helped us understand the spatial relationships and distances between images within the reduced-dimensional space.
 
-#### 5. Rotate: 45°, 90°, 180°
-Returns a rotated copy of this image, rotated the given number of degrees counter clockwise around its centre. We rotate by 45°, 90°, and 180° and this behavior can be customized using `angles`.
+Our data for below visualization consists of 4 image categories (Dog, Kid, Party, Skiing). For each category we visualize embeddings of 19 images (1 original and 18 modified).
+
+<img width="474" alt="Screenshot 2024-02-19 at 6 33 26 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/b5326820-7125-43d3-afd5-e0f9753928b3">
+
+**4. Evaluation of Cosine Similarity for different embeddings -** This includes the evaluation of cosine similarity using a dataset comprising four image categories (Dog, Kid, Party, Skiing), each category includes embeddings for 19 images (1 original and 18 modified). The process involves normalizing the image embeddings and subsequently calculating the cosine similarity matrices. This is achieved by taking the dot product of image embeddings and their transpose.
+
+<img width="242" alt="Screenshot 2024-02-19 at 6 37 20 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/cba8e61c-9d0b-4551-af9d-7fb1d702952d">
+
+**5. Explainable AI for Object Detection -** In our analysis, a consistent observation emerged: when images undergo cropping, the similarity scores decrease, implying that these algorithms may classify cropped images as dissimilar even if they originate from the same source. This highlights a scenario where not only image similarity but also object detection becomes crucial. To delve into this aspect, we leverage the explainable AI tool GradCAM (Grad-CAM, 2023) to visualize the objects detected by both ResNet50 and CLIP models. 
+
+<img width="591" alt="Screenshot 2024-02-19 at 6 38 47 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/ea6e24c8-0b73-4a6f-a58d-e791583bed73">
+
+<img width="591" alt="Screenshot 2024-02-19 at 6 39 04 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/80f44186-a458-4247-a7aa-58d7076d66ea">
+
+It's noteworthy that ResNet50, acknowledged for its robust performance in object detection, exhibits the recognition of a singular object correctly, while CLIP, renowned for its prowess in image similarity recognition, identifies both a bus and a girl **under the label "Person."**
+
+
+
+
+
+
 
