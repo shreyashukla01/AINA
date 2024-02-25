@@ -5,7 +5,7 @@ This project is an academic project created for the course INF 385T: Deep Learni
 Team KNS (Shreya Shukla - https://github.com/shreyashukla01, Krishna Sri Somepalli - https://github.com/krishnasriSomepalli)
 
 ### Motivation
-Image similarity is important in tasks like content based information retrieval, detecting duplicate images, assessing similar images for medical ailments and making recommendations to consumers based on queried images. In the social media realm, it can have multifold benefits in **detecting and flagging inappropriate images**, identifying misinformation and preventing upload of violent and vulgar content. In this project we did a **comprehensive analysis of image similarity detection** where we delve into different models, embeddings, visualizations and more.
+Image similarity is important in tasks like content-based information retrieval, detecting duplicate images, assessing similar images for medical ailments and making recommendations to consumers based on queried images. In the social media realm, it can have multifold benefits in **detecting and flagging inappropriate images**, identifying misinformation and preventing upload of violent and vulgar content. In this project we did a **comprehensive analysis of image similarity detection** where we delve into different models, embeddings, visualizations and more.
 
 ### Dataset
 We used a subset of Instagram images dataset available on Kaggle.
@@ -15,17 +15,17 @@ We used a subset of Instagram images dataset available on Kaggle.
 **1. Comparison of similarity scores from different models -**
 In our analysis, we initially conducted various operations on the images, including cropping, applying Instagram filters, mirroring, and rotating (18 modifications). Subsequently, leveraging models like CLIP and ISC21 (available at https://sites.google.com/view/isc2021), we computed **image similarity scores for the modified images** and averaged them. By utilizing the average similarity score across the different images, we assessed and compared the performance of different models in detecting similarities.
 
-**2. Siamese Network -** Next we created a siamese network, using ResNet50 as the embedding generator and  a fully connected CNN network for the Dense Layers. 
+**2. Siamese Network -** Next we created a Siamese network, using ResNet50 as the embedding generator and  a fully connected CNN network for the Dense Layers. 
 
   <img width="554" alt="Screenshot 2024-02-19 at 6 29 09 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/08bde2d1-6618-476c-9ede-b2c8f5c26a13">
 
-**3. Emedding Visualizations -** Given the high-dimensional nature of the embeddings (e.g., 50 dimensions for ResNet 50, 512 for CLIP, and 256 for ISC21), we used **dimensionality reduction techniques like t-SNE and UMAP to visualise embeddings** that helped us understand the spatial relationships and distances between images within the reduced-dimensional space.
+**3. Embedding Visualizations -** Given the high-dimensional nature of the embeddings (e.g., 50 dimensions for ResNet 50, 512 for CLIP, and 256 for ISC21), we used **dimensionality reduction techniques like t-SNE and UMAP to visualize embeddings** that helped us understand how images are positioned in relation to each other and how far apart they are from one another within the reduced-dimensional space.
 
 Our data for below visualization consists of 4 image categories (Dog, Kid, Party, Skiing). For each category we visualize embeddings of 19 images (1 original and 18 modified).
 
   <img width="474" alt="Screenshot 2024-02-19 at 6 33 26 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/b5326820-7125-43d3-afd5-e0f9753928b3">
 
-**4. Evaluation of Cosine Similarity for different embeddings -** This includes the evaluation of cosine similarity using a dataset comprising four image categories (Dog, Kid, Party, Skiing), each category includes embeddings for 19 images (1 original and 18 modified). The process involves **normalizing the image embeddings and subsequently calculating the cosine similarity matrices**. This is achieved by taking the dot product of image embeddings and their transpose. Below is the cosine matrix for CLIP model
+**4. Evaluation of Cosine Similarity for different embeddings -** This includes the evaluation of cosine similarity using a subset comprising four image categories (Dog, Kid, Party, Skiing), each category includes embeddings for 19 images (1 original and 18 modified). The process involves **normalizing the image embeddings and subsequently calculating the cosine similarity matrices**. This is achieved by taking the dot product of image embeddings and their transpose. Below is the cosine matrix for CLIP model
 
   <img width="268" alt="Screenshot 2024-02-19 at 9 16 11 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/f8535ddc-93e0-47d4-8775-4fe131164cfc">
 
