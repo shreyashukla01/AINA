@@ -35,7 +35,7 @@ Our data for below visualization consists of 4 image categories (Dog, Kid, Party
 
   <img width="591" alt="Screenshot 2024-02-19 at 6 39 04 PM" src="https://github.com/shreyashukla01/AINA/assets/30028998/80f44186-a458-4247-a7aa-58d7076d66ea">
 
-It's noteworthy that ResNet50, acknowledged for its robust performance in object detection, exhibits the recognition of a singular object correctly, while CLIP, renowned for its prowess in image similarity recognition, identifies both a bus and a girl **under the label "Person."**
+It's noteworthy that ResNet50, acknowledged for its robust performance in object detection, exhibits the recognition of a singular object correctly, while CLIP, known for its image similarity recognition, identifies both a bus and a girl **under the label "Person."**
 
 
 
